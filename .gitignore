@@ -24,3 +24,4 @@ yarn-error.log*
 /lib
 .merlin
 .eslintcache
+.bsb.lock
