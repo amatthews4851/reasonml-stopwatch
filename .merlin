@@ -1,0 +1,20 @@
+####{BSB GENERATED: NO EDIT
+B lib/bs
+FLG -open YourProjectName
+FLG -ppx '/Users/amatthews/playground/chads-thing/node_modules/bs-platform/darwin/bsc.exe -as-ppx -bs-jsx 3'
+S /Users/amatthews/playground/chads-thing/node_modules/bs-platform/lib/ocaml
+B /Users/amatthews/playground/chads-thing/node_modules/bs-platform/lib/ocaml
+FLG -w +a-4-9-20-40-41-42-50-61-102
+S /Users/amatthews/playground/chads-thing/node_modules/reason-react/lib/ocaml
+B /Users/amatthews/playground/chads-thing/node_modules/reason-react/lib/ocaml
+S /Users/amatthews/playground/chads-thing/node_modules/bs-css/lib/ocaml
+B /Users/amatthews/playground/chads-thing/node_modules/bs-css/lib/ocaml
+S /Users/amatthews/playground/chads-thing/node_modules/bs-css-emotion/lib/ocaml
+B /Users/amatthews/playground/chads-thing/node_modules/bs-css-emotion/lib/ocaml
+S reason
+B lib/bs/reason
+S reason/components/Button
+B lib/bs/reason/components/Button
+S reason/components/Background
+B lib/bs/reason/components/Background
+####BSB GENERATED: NO EDIT}

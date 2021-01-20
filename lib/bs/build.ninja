@@ -1,0 +1,32 @@
+rescript = 1
+g_finger := /Users/amatthews/playground/chads-thing/node_modules/reason-react/lib/ocaml/install.stamp
+g_finger := /Users/amatthews/playground/chads-thing/node_modules/bs-css/lib/ocaml/install.stamp
+g_finger := /Users/amatthews/playground/chads-thing/node_modules/bs-css-emotion/lib/ocaml/install.stamp
+rule astj
+  command = /Users/amatthews/playground/chads-thing/node_modules/bs-platform/darwin/bsc.exe  -bs-v 8.4.2 -bs-jsx 3 -bs-super-errors -absname -bs-ast -o $out $i
+o reason/App.ast : astj ../../reason/App.re
+rule deps
+  command = /Users/amatthews/playground/chads-thing/node_modules/bs-platform/darwin/bsb_helper.exe -hash 5db2e4aa4fc13e1c1a316aeec0afa34e -bs-ns YourProjectName $in
+  restat = 1
+o reason/App.d : deps reason/App.ast
+rule mij
+  command = /Users/amatthews/playground/chads-thing/node_modules/bs-platform/darwin/bsc.exe -bs-ns YourProjectName -I . -I reason/components/Background -I reason/components/Button -I reason/components -I reason -I /Users/amatthews/playground/chads-thing/node_modules/reason-react/lib/ocaml -I /Users/amatthews/playground/chads-thing/node_modules/bs-css/lib/ocaml -I /Users/amatthews/playground/chads-thing/node_modules/bs-css-emotion/lib/ocaml -bs-super-errors  -bs-package-name your-project-name -bs-package-output es6:lib/es6/$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o reason/App-YourProjectName.cmj reason/App-YourProjectName.cmi ../es6/reason/App.bs.js : mij reason/App.ast
+o reason/Utils.ast : astj ../../reason/Utils.re
+o reason/Utils.d : deps reason/Utils.ast
+o reason/Utils-YourProjectName.cmj reason/Utils-YourProjectName.cmi ../es6/reason/Utils.bs.js : mij reason/Utils.ast
+o reason/Reducer.ast : astj ../../reason/Reducer.re
+o reason/Reducer.d : deps reason/Reducer.ast
+o reason/Reducer-YourProjectName.cmj reason/Reducer-YourProjectName.cmi ../es6/reason/Reducer.bs.js : mij reason/Reducer.ast
+o reason/components/Button/Button.ast : astj ../../reason/components/Button/Button.re
+o reason/components/Button/Button.d : deps reason/components/Button/Button.ast
+o reason/components/Button/Button-YourProjectName.cmj reason/components/Button/Button-YourProjectName.cmi ../es6/reason/components/Button/Button.bs.js : mij reason/components/Button/Button.ast
+o reason/components/Background/Background.ast : astj ../../reason/components/Background/Background.re
+o reason/components/Background/Background.d : deps reason/components/Background/Background.ast
+o reason/components/Background/Background-YourProjectName.cmj reason/components/Background/Background-YourProjectName.cmi ../es6/reason/components/Background/Background.bs.js : mij reason/components/Background/Background.ast
+rule build_package
+  command = /Users/amatthews/playground/chads-thing/node_modules/bs-platform/darwin/bsc.exe -w -49 -color always -no-alias-deps  $i
+  restat = 1
+o YourProjectName.cmi : build_package YourProjectName.mlmap
